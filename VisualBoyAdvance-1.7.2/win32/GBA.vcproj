@@ -86,7 +86,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libpngMD.lib zlibMD.lib CxImage.lib jpeg.lib d3dx8.lib wsock32.lib ddraw.lib dxguid.lib winmm.lib dinput.lib vfw32.lib opengl32.lib"
-				OutputFile="Release/VisualBoyAdvance.exe"
+				OutputFile="Release/AITEM.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\lib\win32&quot;;C:\Python27\libs"
@@ -289,7 +289,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libpngMD.lib zlibMD.lib CxImage.lib jpeg.lib d3dx8.lib wsock32.lib ddraw.lib dxguid.lib winmm.lib dinput.lib vfw32.lib opengl32.lib"
-				OutputFile="ReleaseNoDev/VisualBoyAdvance.exe"
+				OutputFile="ReleaseNoDev/AITEM.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\lib\win32&quot;;C:\Python27\libs"
@@ -1048,11 +1048,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\gb\gbPrinter.h"
+				RelativePath="..\src\win32\GBPrinter.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\win32\GBPrinter.h"
+				RelativePath="..\src\gb\gbPrinter.h"
 				>
 			</File>
 			<File
@@ -1212,11 +1212,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\Sound.h"
+				RelativePath="..\src\win32\Sound.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\win32\Sound.h"
+				RelativePath="..\src\Sound.h"
 				>
 			</File>
 			<File

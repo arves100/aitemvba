@@ -16,3 +16,10 @@ Follow the instructions under (NASM Installation dir)\VSrules\nasm.README for ad
 Open GBA.sln with VS2008 and build it.
 
 A copy of some parts of Microsoft DirectX SDK are provided for building DirectDraw, DirectSound and Direct3D8.
+
+## Stuff that would be nice to do
+- Add changes from AGAI, AAI versions
+- Switch to Python 3
+- Use a newer branch of VBA (I will fork VBA-M later and add the support on it)
+- Make a generic python interface (not only for SF3Z)
+- Move to Visual Studio 2019
