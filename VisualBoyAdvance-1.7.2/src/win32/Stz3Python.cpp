@@ -545,21 +545,11 @@ Stz3Python::Initial()
     m_pModule = PyImport_Import(m_pName);
 	if (!m_pModule)
 	{
-		PyObject* oo = PyErr_Occurred();
-		if (oo)
-		{
-
-PyObject *ptype, *pvalue, *ptraceback;
-PyErr_Fetch(&ptype, &pvalue, &ptraceback);
-//pvalue contains error message
-//ptraceback contains stack snapshot and many other information
-//(see python traceback structure)
-
-//Get error message
-char *pStrErrorMessage = PyString_AsString(pvalue);
-MessageBoxA(NULL, pStrErrorMessage, "ERR!", MB_OK | MB_ICONERROR);
-		}
+		systemMessage(0, "Unable to load Python script");
+		PyErr_Print();
+		return 1;
 	}
+
 	m_pDict = PyModule_GetDict(m_pModule);
 	m_pFunc = PyDict_GetItemString(m_pDict, "Redirection");
 
@@ -573,16 +563,38 @@ MessageBoxA(NULL, pStrErrorMessage, "ERR!", MB_OK | MB_ICONERROR);
     {
         PyErr_Print();
     }	
-	return 0;
+
+	return MY_SUCCESS;
 }
 
 
 int
 Stz3Python::Destroy()
 {
+	if (m_pDict)
+	{
+		m_pFunc = PyDict_GetItemString(m_pDict, "Destroy");
+
+		if (PyCallable_Check(m_pFunc)) 
+		{
+			// OK !!!!
+			// Call Destroy to execute some special action at the destroy of the script
+			PyObject_CallObject(m_pFunc, NULL);
+		}
+		else 
+		{
+			PyErr_Print();
+		}	
+	}
 	// Clean up
-    Py_DECREF(m_pModule);
-    Py_DECREF(m_pName);
+	if (m_pModule)
+	    Py_DECREF(m_pModule);
+
+	if (m_pName)
+	    Py_DECREF(m_pName);
+
+	m_pModule = NULL;
+	m_pName = NULL;
 
     // Finish the Python Interpreter
     Py_Finalize();

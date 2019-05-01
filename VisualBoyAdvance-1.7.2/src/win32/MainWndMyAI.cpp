@@ -21,7 +21,12 @@ void MainWnd::OnStartMyAI()
 	if (!theApp.pAIScript)
 	{
 		theApp.pAIScript = new Stz3AIScript; // Must change to global AI !!!!
-		theApp.pAIScript->Initial();
+		if (theApp.pAIScript->Initial() != MY_SUCCESS)
+		{
+			delete theApp.pAIScript;
+			theApp.pAIScript = NULL;
+			return;
+		}
 	}
 
 	//systemScreenMessage(winResLoadString(IDS_START_MYAI));
@@ -67,7 +72,12 @@ void MainWnd::OnStartPythonScript()
 	if (theApp.myAIPlaying)return;
 
 	theApp.pPython = new Stz3Python; // Must change to global AI !!!!
-	theApp.pPython->Initial();
+	if (theApp.pPython->Initial() != MY_SUCCESS)
+	{
+		delete theApp.pPython;
+		theApp.pPython = NULL;
+		return;
+	}
 
 	systemScreenMessage(winResLoadString(IDS_START_PYTHONSCRIPT));	
 	theApp.pythonPlaying = true;
@@ -133,7 +143,12 @@ void MainWnd::OnStartAutoBattle()
 	if (!theApp.pAIScript)
 	{
 		theApp.pAIScript = new Stz3AIScript; // Must change to global AI !!!!
-		theApp.pAIScript->Initial();
+		if (theApp.pAIScript->Initial() != MY_SUCCESS)
+		{
+			delete theApp.pAIScript;
+			theApp.pAIScript = NULL;
+			return;
+		}
 
 		// Automatic load state to the prompt state
 		if(theApp.emulator.emuReadState)
@@ -152,7 +167,12 @@ void MainWnd::OnStartAutoBattle()
 	if (theApp.pAIScript->m_autoBattleAI == AUTO_BATTLE_AI_PYSCRIPT)
 	{
 		theApp.pPython = new Stz3Python;
-		theApp.pPython->Initial();
+		if (theApp.pPython->Initial() != MY_SUCCESS)
+		{
+			delete theApp.pPython;
+			theApp.pPython = NULL;
+			return;
+		}
 	}
 
 	systemScreenMessage(winResLoadString(IDS_START_AUTOBATTLE));	
@@ -217,8 +237,13 @@ void MainWnd::OnStartAnimationRecord()
 	if (!theApp.pAIScript)
 	{
 		theApp.pAIScript = new Stz3AIScript; // Must change to global AI !!!!
-		theApp.pAIScript->Initial();
-		
+		if (theApp.pAIScript->Initial() != MY_SUCCESS)
+		{
+			delete theApp.pAIScript;
+			theApp.pAIScript = NULL;
+			return;
+		}
+
 		theApp.pAIScript->AutoAniCollectionINIParse();
 		CreateDirectory(theApp.pAIScript->m_aniRecordFolder, 0);
 		CreateDirectory(theApp.pAIScript->m_aniRecordMissFolder, 0);
