@@ -2266,6 +2266,8 @@ void VBA::saveSettings()
 
   regSetDwordValue("gbPrinter", winGbPrinterEnabled);
 
+  regSetDwordValue("gbPython", winGbPytonScriptEnabled);
+
   regSetDwordValue("pauseWhenInactive", pauseWhenInactive);
 
   regSetDwordValue("useOldSync", useOldSync);
