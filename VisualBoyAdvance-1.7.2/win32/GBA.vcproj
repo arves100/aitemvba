@@ -90,7 +90,7 @@
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\lib\win32&quot;;C:\Python27\libs"
-				IgnoreDefaultLibraryNames="libc,libm,libmmd"
+				IgnoreDefaultLibraryNames="msvcrtd;libc;libm;libmmd;libci"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Release/VisualBoyAdvance.pdb"
 				GenerateMapFile="true"
@@ -293,7 +293,7 @@
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="&quot;$(ProjectDir)\lib\win32&quot;;C:\Python27\libs"
-				IgnoreDefaultLibraryNames="libc,libm,libmmd"
+				IgnoreDefaultLibraryNames="msvcrtd;libc;libm;libmmd;libci"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\ReleaseNoDev/VisualBoyAdvance.pdb"
 				GenerateMapFile="true"
@@ -338,7 +338,23 @@
 				RelativePath="..\src\i386\2xSaImmx.asm"
 				>
 				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="NASM"
+						PreprocessorDefinitions="__DJGPP__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Debug|Win32"
+					>
+					<Tool
+						Name="NASM"
+						PreprocessorDefinitions="__DJGPP__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseNoDev|Win32"
 					>
 					<Tool
 						Name="NASM"
@@ -1048,11 +1064,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\win32\GBPrinter.h"
+				RelativePath="..\src\gb\gbPrinter.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\gb\gbPrinter.h"
+				RelativePath="..\src\win32\GBPrinter.h"
 				>
 			</File>
 			<File
@@ -1212,11 +1228,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\src\win32\Sound.h"
+				RelativePath="..\src\Sound.h"
 				>
 			</File>
 			<File
-				RelativePath="..\src\Sound.h"
+				RelativePath="..\src\win32\Sound.h"
 				>
 			</File>
 			<File
